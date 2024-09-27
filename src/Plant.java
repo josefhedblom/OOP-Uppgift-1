@@ -1,23 +1,33 @@
 public abstract class Plant {
     private String type;
-    private int height;
-    private double fluidRequirement;
+    private String name;
+    private double height;
 
-    public Plant(String type, int height, double fluidRequirement) {
+    public Plant(String type, String name, double height) {
         this.type = type;
+        this.name = name;
         this.height = height;
-        this.fluidRequirement = fluidRequirement;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public int getHeight() {
-        return height;
+    public String getName() {
+        return this.name;
     }
 
-    public double getFluidRequirement() {
-        return fluidRequirement;
+    public double getHeight() {
+        return this.height;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Plant{" +
+                "typ='" + this.type + '\'' +
+                ", namn='" + this.name +
+                ", höjd=" + this.height +
+                '}';
     }
 }
