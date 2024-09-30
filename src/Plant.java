@@ -1,4 +1,4 @@
-public abstract class Plant {
+public abstract class Plant implements FluidRequirement {
     private String type;
     private String name;
     private double height;
@@ -20,6 +20,9 @@ public abstract class Plant {
     public double getHeight() {
         return this.height;
     }
+
+    public abstract FluidType getFluidType();
+
 
 
     @Override
