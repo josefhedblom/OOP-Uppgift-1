@@ -1,16 +1,22 @@
-public class Cactus extends Plant implements FluidRequirement {
+import javax.swing.*;
+
+public class Cactus extends Plant {
 
     public Cactus(String type,String name,double height) {
         super(type, name, height);
     }
 
-    @Override
-    public String calulateFluidRequirement() {
-        return "";
+    public double calculateFluidRequirement(){
+        return 0.2;
     }
 
     @Override
+    public FluidType getFluidType() {
+        return FluidType.MINERAL_WATER;
+    }
+
     public String getFluidRequirement() {
-        return "";
+        return this.getType() + " " + this.getName() + " behöver " +
+                this.calculateFluidRequirement() + " liter " + getFluidType().getDescription();
     }
 }
