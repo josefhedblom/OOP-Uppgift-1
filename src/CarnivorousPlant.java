@@ -1,15 +1,22 @@
-public class CarnivorousPlant extends Plant implements FluidRequirement {
+import javax.swing.*;
+
+public class CarnivorousPlant extends Plant {
     public CarnivorousPlant(String type,String name,double height) {
         super(type, name, height);
     }
 
-    @Override
-    public String calulateFluidRequirement() {
-        return "";
+
+    public double calculateFluidRequirement() {
+        return 0.1 + (0.2* this.getHeight());
     }
 
     @Override
+    public FluidType getFluidType() {
+        return FluidType.PROTEIN_DRINK;
+    }
+
     public String getFluidRequirement() {
-        return "";
+        return this.getType() + " " + this.getName() + " behöver " +
+                this.calculateFluidRequirement() + " liter " + getFluidType().getDescription();
     }
 }
