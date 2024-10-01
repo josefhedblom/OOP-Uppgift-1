@@ -29,6 +29,6 @@ public class Main {
     }
 
     public static void printMessage(Plant plant){
-        JOptionPane.showMessageDialog(null, plant.getFluidType());
+        JOptionPane.showMessageDialog(null, plant.getFluidRequirement());
     }
 }
