@@ -1,12 +1,14 @@
 
 public class Palm extends Plant {
+
+    private final double palmTapwater = 0.5;
     public Palm(String type,String name,double height) {
         super(type, name, height);
     }
 
     @Override
     public double calculateFluidRequirement() {
-        return 0.5 * this.getHeight();
+        return palmTapwater * this.getHeight();
     }
 
     @Override
@@ -15,7 +17,7 @@ public class Palm extends Plant {
     }
 
     public String getFluidRequirement() {
-        return this.getType() + " " + this.getName() + " behöver " +
-                this.calculateFluidRequirement() + " liter " + getFluidType().getDescription();
+        return this.getName() + " är en " + this.getType().toLowerCase() + " och behöver " +
+                this.calculateFluidRequirement() + " liter " + getFluidType().getDescription() + "  per dag";
     }
 }

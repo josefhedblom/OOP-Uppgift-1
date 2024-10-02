@@ -1,5 +1,5 @@
 public enum FluidType {
-    TAP_WATER("Kranvatten"),
+    TAP_WATER("kranvatten"),
     PROTEIN_DRINK("proteindryck"),
     MINERAL_WATER("mineralvatten");
 
