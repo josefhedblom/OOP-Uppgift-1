@@ -4,34 +4,61 @@ import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class GreenestHotel {
 
-    String inputPlant = JOptionPane.showInputDialog("Vilken växt ska få mat?"); // byta namn på input variablen
+    public GreenestHotel() {
 
-    Cactus igge = new Cactus("Kaktus", "Igge", 0.2);
-    Palm laura = new Palm("Plam", "Laura", 3);
-    Palm olof = new Palm("Plam", "Olof", 0.5);
-    CarnivorousPlant meatloaf = new CarnivorousPlant("Köttätande växt", "Meatloaf", 0.5);
+        Cactus igge = new Cactus("Kaktus", "Igge", 0.2);
+        Palm laura = new Palm("Palm", "Laura", 3);
+        Palm olof = new Palm("Palm", "Olof", 0.5);
+        CarnivorousPlant meatloaf = new CarnivorousPlant("Köttätande växt", "Meatloaf", 0.5);
 
-    List<Plant> plants = Arrays.asList(igge, laura, olof, meatloaf);
+        List<Plant> plants = Arrays.asList(igge, laura, olof, meatloaf);
 
-    boolean plantFound = false;
-
-        for(Plant plant :plants){
-        if (plant.getName().equalsIgnoreCase(inputPlant)) {
-            printMessage(plant);
-            plantFound = true;
-            break;
-        }
+        String inputPlant = showInputDialog();
+        findPlant(plants, inputPlant);
     }
-
-        if(!plantFound){
-            JOptionPane.showMessageDialog(null, "Plantan '" + inputPlant + "' finns inte.");
-        }
 
     public void printMessage(Plant plant) {
         JOptionPane.showMessageDialog(null, plant.getFluidRequirement());
     }
 
-}
+    public String showInputDialog() {
+        String inputPlant;
 
+        do {
+            inputPlant = JOptionPane.showInputDialog("Vilken växt ska få mat?");
+            if (inputPlant == null || inputPlant.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Du får inte lämna fältet tomt. Försök igen.");
+            }
+        } while (inputPlant == null || inputPlant.isEmpty());
+
+        return inputPlant;
+    }
+
+
+    public void findPlant(List<Plant> plants, String inputPlant) {
+        Plant foundPlant = findPlantByName(plants, inputPlant);
+
+        if (foundPlant != null) {
+            printMessage(foundPlant);
+        } else {
+            JOptionPane.showMessageDialog(null, "Plantan '" + inputPlant + "' finns inte.");
+        }
+    }
+
+    public Plant findPlantByName(List<Plant> plants, String inputPlant) {
+        for (Plant plant : plants) {
+            if (plant.getName().equalsIgnoreCase(inputPlant)) {
+                return plant;
+            }
+        }
+        return null;
+    }
+
+
+    public static void main(String[] args) {
+        new GreenestHotel();
+    }
+
+}

@@ -1,3 +1,5 @@
+package GreenestHotel;
+
 public enum FluidType {
     TAP_WATER("kranvatten"),
     PROTEIN_DRINK("proteindryck"),
