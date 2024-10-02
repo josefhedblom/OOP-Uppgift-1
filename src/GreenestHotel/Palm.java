@@ -1,3 +1,4 @@
+package GreenestHotel;
 
 public class Palm extends Plant {
 

@@ -1,4 +1,4 @@
-import javax.swing.*;
+package GreenestHotel;
 
 public class Cactus extends Plant {
     private final double cactusMineralWater = 0.02;

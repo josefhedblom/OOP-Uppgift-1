@@ -1,4 +1,4 @@
-import javax.swing.*;
+package GreenestHotel;
 
 public class CarnivorousPlant extends Plant {
     private final double proteinDrink = 0.1;
