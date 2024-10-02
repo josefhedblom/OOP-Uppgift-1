@@ -15,8 +15,32 @@ public class GreenestHotel {
 
         List<Plant> plants = Arrays.asList(igge, laura, olof, meatloaf);
 
-        String inputPlant = showInputDialog();
-        findPlant(plants, inputPlant);
+        boolean running = true;
+
+
+        try {
+            while (running) {
+                String menuInput = printMenu();
+                switch (menuInput) {
+                    case "1":
+                        showAllPlants(plants);
+                        break;
+                    case "2":
+                        String input = showInputDialog();
+                        findPlant(plants, input);
+                        break;
+                    case "3":
+                        JOptionPane.showMessageDialog(null,"Avslutar programmet");
+                        running = false;
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Ogitligt val. Försök igen");
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ett fel har uppstått: " + e.getMessage());
+        }
     }
 
     public void printMessage(Plant plant) {
@@ -54,6 +78,24 @@ public class GreenestHotel {
             }
         }
         return null;
+    }
+
+    public String printMenu() {
+        String input = JOptionPane.showInputDialog("Välj ett alternativ:\n1. Visa alla växter\n2. Vattna en växt:\n3. Avsluta");
+        return input;
+    }
+
+    public void showAllPlants(List<Plant> plants) {
+        StringBuilder allPlants = new StringBuilder();
+        for (Plant plant : plants) {
+            allPlants.append(plant.getName())
+                    .append(" (")
+                    .append(plant.getType())
+                    .append(") - ")
+                    .append(plant.calculateFluidRequirement())
+                    .append(" liter/dag\n");
+        }
+        JOptionPane.showMessageDialog(null, allPlants.toString());
     }
 
 
