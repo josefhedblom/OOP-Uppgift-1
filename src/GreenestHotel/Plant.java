@@ -1,3 +1,5 @@
+package GreenestHotel;
+
 public abstract class Plant implements FluidRequirement {
     private String type;
     private String name;
@@ -27,7 +29,7 @@ public abstract class Plant implements FluidRequirement {
 
     @Override
     public String toString() {
-        return "Plant{" +
+        return "GreenestHotel.Plant{" +
                 "typ='" + this.type + '\'' +
                 ", namn='" + this.name +
                 ", höjd=" + this.height +
